@@ -87,10 +87,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import requests
 
 # 🔹 Função de Coleta de Dados
 def collect_data():
