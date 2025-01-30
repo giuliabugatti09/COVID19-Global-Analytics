@@ -4,23 +4,32 @@ import sys
 import os
 
 # 🔹 Adicionando o diretório 'scripts' ao path para importar os módulos
-sys.path.append(os.path.abspath("scripts"))
+script_path = os.path.abspath("scripts")
+sys.path.append(script_path)
 
-# 🔹 Importando as funções dos módulos
-from scripts.coleta_dados import collect_data
-from scripts.limpeza_dados import process_data
-from scripts.visualizacao_dados import visualize_data
+# 🔹 Tentando importar as funções dos módulos de forma segura
+try:
+    from scripts.coleta_dados import collect_data
+    from scripts.limpeza_dados import process_data
+    from scripts.visualizacao_dados import visualize_data
+except ImportError as e:
+    st.error(f"Erro ao importar módulos: {e}")
+    sys.exit()
 
 # 🔹 Configuração do título do app no Streamlit
 st.title("Análise Global da COVID-19 📊")
 
-# 🔹 Botão para carregar e processar os dados
-if st.button("Carregar Dados"):
+# 🔹 Função para carregar e processar os dados
+def carregar_dados():
     with st.spinner("Coletando e processando os dados..."):
-        df = collect_data()
-        df = process_data(df)
+        df = collect_data()  # Coleta os dados
+        df = process_data(df)  # Processa os dados
         st.session_state["df"] = df  # Salvando o DataFrame na sessão
     st.success("Dados carregados com sucesso!")
+
+# 🔹 Botão para carregar os dados
+if st.button("Carregar Dados"):
+    carregar_dados()
 
 # 🔹 Se os dados já foram carregados, exibir visualizações
 if "df" in st.session_state:
