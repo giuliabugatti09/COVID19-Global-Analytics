@@ -9,9 +9,9 @@ sys.path.append(script_path)
 
 # 🔹 Tentando importar as funções dos módulos de forma segura
 try:
-    from scripts.coleta_dados import collect_data
-    from scripts.limpeza_dados import process_data
-    from scripts.visualizacao_dados import visualize_data
+    from scripts.coleta_dados.py import collect_data
+    from scripts.limpeza_dados.py import process_data
+    from scripts.visualizacao_dados.py import visualize_data
 except ImportError as e:
     st.error(f"Erro ao importar módulos: {e}")
     sys.exit()
