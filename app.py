@@ -1,38 +1,9 @@
-import requests
-
-def fetch_data(url):
-    # Envia uma solicitação GET para a URL da API
-    response = requests.get(url)
-
-    # Verifica se a solicitação foi bem-sucedida (código 200)
-    if response.status_code == 200:
-        return response.json()  # Retorna a resposta em formato JSON
-    else:
-        print(f"Erro ao acessar a API: Código de resposta {response.status_code}")
-        return None
-
-def main():
-    # URL da API (dados mais recentes da COVID-19)
-    api_url = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json"
-
-    # Coleta os dados
-    data = fetch_data(api_url)
-
-    if data:
-        print("Dados coletados com sucesso!")
-        # Accessing the first two countries' data using a loop and keys
-        # Assuming countries are stored with their country codes as keys.
-        # Replace "country_code1", "country_code2" with actual country codes.
-        for i, country_code in enumerate(["OWID_AFR", "OWID_ASI"]):  # Replace with actual country codes
-            if i >= 2:
-                break # break after printing two records
-            print(data[country_code])
-
-if __name__ == "__main__":
-    main()
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 import requests
+import matplotlib.dates as mdates
 
 # Função para coletar os dados da API
 def fetch_data(url):
@@ -71,35 +42,8 @@ def process_data(data):
 
     return df
 
-def main():
-    api_url = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json"
-    raw_data = fetch_data(api_url)
-
-    if raw_data:
-        print("✅ Dados coletados com sucesso!")
-        cleaned_data = process_data(raw_data)
-        print("\n📊 **Resumo dos Dados Processados:**")
-        print(cleaned_data.head())  # Exibe as primeiras linhas do DataFrame
-
-        # Exibe estatísticas gerais
-        print("\n📈 Estatísticas básicas:")
-        print(cleaned_data.describe())
-
-if __name__ == "__main__":
-    main()
-
-# 🔹 Função de Coleta de Dados
-def collect_data():
-    url = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json"
-    response = requests.get(url)
-    data = response.json()
-
-    # Criar DataFrame a partir dos dados coletados
-    df = pd.DataFrame(data).transpose()
-    return df
-
-# 🔹 Função de Processamento e Limpeza de Dados
-def process_data(df):
+# Função de Processamento e Limpeza de Dados
+def process_visual_data(df):
     # Substituindo valores negativos por NaN
     numeric_columns = df.select_dtypes(include=[np.number]).columns
     df[numeric_columns] = df[numeric_columns].applymap(lambda x: x if x >= 0 else np.nan)
@@ -126,7 +70,7 @@ def process_data(df):
 
     return df
 
-# 🔹 Função de Visualização dos Dados
+# Função de Visualização dos Dados
 def visualize_data(df):
     total_cases_world = df["total_cases"].sum()  # Total de casos no mundo
     df["percentage_world"] = (df["total_cases"] / total_cases_world) * 100  # Percentual de casos por país
@@ -151,52 +95,38 @@ def visualize_data(df):
     plt.xticks(rotation=45, ha='right')
     plt.show()
 
-    # 📌 Gráfico 2️⃣: Relação entre Casos e Mortes (dispersão) para os 20 maiores países
-    plt.figure(figsize=(12, 8))
+    # 📊 Gráfico 2️⃣: Comparação de Casos e Mortes (barras) para 5 países específicos em milhões
+    plt.figure(figsize=(14, 8))
 
-    # 🔹 Ajustar a coluna de 'total_cases' e 'total_deaths' para milhões
-    df['total_cases_millions'] = df['total_cases'] / 1_000_000
-    df['total_deaths_millions'] = df['total_deaths'] / 1_000_000
+    # 🔹 Selecionar os 5 países específicos
+    countries = ['Brazil', 'India', 'United States', 'Russia', 'United Kingdom']
+    top_countries = df[df['location'].isin(countries)]
 
-    # 🔹 Filtrar os 20 países com mais casos para o gráfico
-    top_20_countries = df.nlargest(20, 'total_cases')
+    # 🔹 Ajustar os dados para o gráfico de barras em milhões
+    top_countries['total_cases_millions'] = top_countries['total_cases'] / 1_000_000
+    top_countries['total_deaths_millions'] = top_countries['total_deaths'] / 1_000_000
 
-    # 🔹 Ajuste de zoom: aumentando o intervalo de valores para "dar mais espaço" entre os pontos
-    plt.xlim(0, top_20_countries['total_cases_millions'].max() * 1.3)  # Ajusta a escala do eixo x
-    plt.ylim(0, top_20_countries['total_deaths_millions'].max() * 1.3)  # Ajusta a escala do eixo y
+    # 🔹 Criar gráfico de barras agrupadas
+    total_cases = top_countries.set_index('location')['total_cases_millions']
+    total_deaths = top_countries.set_index('location')['total_deaths_millions']
+    top_countries_comparison = pd.DataFrame({'Total Cases (M)': total_cases, 'Total Deaths (M)': total_deaths})
 
-    # 🔹 Plotando um gráfico de dispersão com rótulos de países
-    scatter_plot = sns.scatterplot(data=top_20_countries, x='total_cases_millions', y='total_deaths_millions',
-                                   alpha=0.7, s=100, color='b', hue='location', legend=False)
+    top_countries_comparison.plot(kind='bar', color=['blue', 'red'], figsize=(14, 8))
 
-    # 🔹 Adicionando rótulos para cada ponto (apenas os top 20 países)
-    for i, row in top_20_countries.iterrows():
-        scatter_plot.text(row['total_cases_millions'], row['total_deaths_millions'],
-                          row['location'], fontsize=9, ha='right', va='bottom', color='black', alpha=0.7)
-
-    # 🔹 Melhorando o título e rótulos
-    plt.xlabel("Total de Casos (milhões)")
-    plt.ylabel("Total de Mortes (milhões)")
-    plt.title("Relação entre Casos e Mortes de COVID-19 (Top 20 Países)")
-
+    plt.xlabel('Países')
+    plt.ylabel('Número Total (Milhões)')
+    plt.title('Comparação de Casos e Mortes de COVID-19 em 5 Países (em Milhões)')
+    plt.xticks(rotation=45, ha='right')
+    plt.legend(title='Legenda')
     plt.grid(True)
     plt.show()
 
-# 🔹 Função principal
-def main():
-    # Coleta os dados
-    df = collect_data()
-    print("Dados coletados com sucesso!")
+# Função de coleta de dados diários de um país específico
+def collect_daily_data(country):
+    url = f"https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/jhu/full_data.csv"
+    response = requests.get(url)
+    df = pd.read_csv(url)
+    df = df[df['location'] == country]  # Filtrar pelo país específico
+    return df
 
-    # Exibe as primeiras linhas dos dados para verificação
-    print(df.head())
-
-    # Processa os dados
-    df = process_data(df)
-
-    # Visualiza os dados
-    visualize_data(df)
-
-# 🔹 Executar o código
-if __name__ == "__main__":
-    main()
+# Função de visual
