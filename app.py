@@ -6,9 +6,9 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "scripts"))
 
 # Importando os módulos de coleta, limpeza e visualização de dados
-from coleta_dados import collect_data
-from limpeza_dados import process_data
-from visualizacao_dados import visualize_data
+from coleta_dados.py import collect_data
+from limpeza_dados.py import process_data
+from visualizacao_dados.py import visualize_data
 
 def main():
     st.title("Análise Global da COVID-19")
