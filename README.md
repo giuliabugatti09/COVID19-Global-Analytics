@@ -18,6 +18,19 @@ Os dados utilizados foram extraídos do repositório oficial do Our World in Dat
 - Matplotlib
 - Seaborn
 - Google Colab (para execução dos notebooks)
+ 
+## 🛠️ **Como Executar**
+
+**Clone este repositório:**
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+**Instale as dependências necessárias:**
+```bash
+pip install pandas matplotlib seaborn
+```
+**Execute o notebook no Google Colab ou localmente**
+
 
 ## **Dicionário das variáveis**
 
@@ -65,24 +78,38 @@ Os dados utilizados foram extraídos do repositório oficial do Our World in Dat
  # **Análise Global 🌎**
  
 - Quais são os cinco países com o maior número de casos de COVID-19?
+  
 <p align="center"> <img src="images/paises_mais_casos_covid.png" alt="Países com mais casos Covid" width="70%"> </p>
-- Quais são os cinco países com o maior número de casos de COVID-19 atualmente? 
+
+- Quais são os cinco países com o maior número de casos de COVID-19 atualmente?
+  
 <p align="center"> <img src="images/paises_mais_casos_atuais_covid.png" alt="Países com mais casos atuais Covid" width="70%"> </p>
+
 - Qual o percentual de vacinados em relação às mortes do COVID-19?
+  
 <p align="center"> <img src="images/percentual_vacinados_mortes.png" alt="Percentual Vacinados X Mortes" width="70%"> </p>
+
 - Existe alguma correlação entre a parcela da população com mais de 65 anos e o percentual de mortes?
+  
 <p align="center"> <img src="images/matriz_correlacao.png" alt="Matriz de correlação" width="70%"> </p>
-- Existe alguma correlação entre o Produto Interno Bruto (PIB) de um país e o número total de mortes? 
+
+- Existe alguma correlação entre o Produto Interno Bruto (PIB) de um país e o número total de mortes?
+ 
 <p align="center"> <img src="images/grafico_dispersao_pib.png" alt="Gráfico de dispersão: PIB" width="70%"> </p>
-- Qual a média de casos e mortes globalmente da COVID-19? 
+
+- Qual a média de casos e mortes globalmente da COVID-19?
+  
 <p align="center"> <img src="images/media_casos_mortes_covid.png" alt="Média de casos e mortes" width="70%"> </p>
+
 - Qual é o continente com a maior mortalidade de idosos?
+  
 <p align="center"> <img src="images/relacao_morte_idosos_covid_continente.png" alt="Relação entre Mortalidade de Idosos por COVID-19 e Continente" width="70%"> </p>
-------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 <p align="center"> <img src="images/covid_brasil.png" alt="Média de casos no Brasil" width="70%"> </p>
 
-# **Análise de dados: Brasil**
+# **Análise de dados: Brasil 🇧🇷**
 
 
 Nesta fase, concentraremos nossa análise no contexto brasileiro e procuraremos responder às seguintes questões:
@@ -104,10 +131,15 @@ Nesta fase, concentraremos nossa análise no contexto brasileiro e procuraremos 
     Timestamp('2020-03-18 00:00:00')
     ```
 - Gráfico da média móvel dos casos e óbitos por COVID-19 no Brasil.
+  
   <p align="center"> <img src="images/media_casos_covid_brasil.png" alt="Média de casos no Brasil" width="70%"> </p>
+  
 - Gráfico de linha mostrando a evolução do número de pessoas vacinadas no Brasil e a progressão das doses de reforço administradas.
+  
 <p align="center"> <img src="images/porcentagem_doses_vacina.png" alt="Porcentagem de Doses Aplicadas" width="70%"> </p>
+
 - Comparação da média móvel de casos e óbitos no Brasil com o cenário global.
+  
 <p align="center"> <img src="images/media_covid_brasil_mundo.png" alt="Média de casos Brasil X Mundo" width="70%"> </p>
 
 ## **Desafios encontrados e como foram superados**
@@ -144,20 +176,8 @@ Esta análise forneceu insights tanto a nível global quanto local, utilizando u
 
 Esta análise oferece uma visão inicial dos dados disponíveis e pode servir como ponto de partida para investigações mais aprofundadas sobre os fatores que influenciam a propagação e o impacto da COVID-19 em diferentes países.
 
-🛠️ ## **Como Executar**
 
-**Clone este repositório:**
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-```
-**Instale as dependências necessárias:**
-```bash
-pip install pandas matplotlib seaborn
-```
-**Execute o notebook no Google Colab ou localmente**
-
-
-📚 ## **Referências**
+ ## 📚 **Referências**
 
 https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
 
