@@ -1,8 +1,0 @@
-covid19-dashboard/
-│── app.py                # Código principal do Streamlit
-│── requirements.txt       # Dependências do projeto
-│── scripts/               # Pasta com os scripts auxiliares
-│   │── coleta_dados.py      # Script de coleta de dados
-│   │── limpeza_dados.py     # Script de limpeza de dados
-│   │── visualizacao_dados.py # Script de visualização de dados
-│── README.md              # Documentação
