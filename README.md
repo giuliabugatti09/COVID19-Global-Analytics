@@ -5,8 +5,8 @@
 
 ## **📊 Sobre o Projeto**
 
+A motivação para este projeto surgiu da necessidade de entender melhor como diferentes políticas públicas impactaram a evolução da pandemia de COVID-19 ao redor do mundo. Com o avanço da crise sanitária, governos adotaram estratégias diversas, desde lockdowns rigorosos até campanhas intensivas de vacinação. No entanto, medir a real efetividade dessas ações requer uma análise profunda de dados, cruzando variáveis como número de casos, mortalidade e taxas de vacinação.
 
-Este projeto tem como objetivo analisar a evolução dos casos de COVID-19 ao redor do mundo, correlacionando com medidas de controle, como lockdowns e campanhas de vacinação. A análise foi realizada utilizando Python e bibliotecas de ciência de dados e visualização, como Pandas, Matplotlib e Seaborn.
 
 ## **📒 Dados Utilizados**
 
@@ -62,48 +62,23 @@ Os dados utilizados foram extraídos do repositório oficial do Our World in Dat
 - `new_vaccinations_smoothed_per_thousand`: Novas doses de vacinação
 
 
-## **🔧 Análises Realizadas**
-
-**Percentual de Vacinados vs. Mortes**
-<p align="center"> <img src="images/percentual_vacinados_mortes.png" alt="Percentual Vacinados X Mortes" width="70%"> </p>
-
-- Analisa a correlação entre a taxa de vacinação e a redução do número de mortes, evidenciando o impacto da imunização.
-
-**Países com Mais Casos Acumulados de COVID-19**
+ # **Análise Global 🌎**
+ 
+- Quais são os cinco países com o maior número de casos de COVID-19?
 <p align="center"> <img src="images/paises_mais_casos_covid.png" alt="Países com mais casos Covid" width="70%"> </p>
-
-- Um ranking dos países com os maiores números de casos acumulados de COVID-19 ao longo do tempo.
-
-**Países com Mais Casos Atuais de COVID-19**
-
+- Quais são os cinco países com o maior número de casos de COVID-19 atualmente? 
 <p align="center"> <img src="images/paises_mais_casos_atuais_covid.png" alt="Países com mais casos atuais Covid" width="70%"> </p>
-
-- Exibe os países com os maiores números de casos ativos no momento da análise.
-
-**Média de Casos e Mortes por COVID-19**
-
-<p align="center"> <img src="images/media_casos_mortes_covid.png" alt="Média de casos e mortes" width="70%"> </p>
-
-- Gráfico de linha mostrando a evolução das médias móveis de casos e mortes globalmente.
-
-**Matriz de Correlação: Impacto nos Idosos e Adultos**
-
+- Qual o percentual de vacinados em relação às mortes do COVID-19?
+<p align="center"> <img src="images/percentual_vacinados_mortes.png" alt="Percentual Vacinados X Mortes" width="70%"> </p>
+- Existe alguma correlação entre a parcela da população com mais de 65 anos e o percentual de mortes?
 <p align="center"> <img src="images/matriz_correlacao.png" alt="Matriz de correlação" width="70%"> </p>
-
-- Um heatmap que mostra a correlação entre idade e gravidade da COVID-19, analisando dados de idosos e adultos.
-
-**Gráfico de Dispersão: PIB vs. Mortalidade**
-
+- Existe alguma correlação entre o Produto Interno Bruto (PIB) de um país e o número total de mortes? 
 <p align="center"> <img src="images/grafico_dispersao_pib.png" alt="Gráfico de dispersão: PIB" width="70%"> </p>
-
-- Analisa a relação entre PIB per capita e o número total de mortes por milhão de habitantes, observando padrões entre diferentes continentes.
-
-**Relação entre Mortalidade de Idosos por COVID-19 e Continente**
-
+- Qual a média de casos e mortes globalmente da COVID-19? 
+<p align="center"> <img src="images/media_casos_mortes_covid.png" alt="Média de casos e mortes" width="70%"> </p>
+- Qual é o continente com a maior mortalidade de idosos?
 <p align="center"> <img src="images/relacao_morte_idosos_covid_continente.png" alt="Relação entre Mortalidade de Idosos por COVID-19 e Continente" width="70%"> </p>
-
-- Compara a taxa de mortalidade de idosos em diferentes continentes, ajudando a identificar padrões regionais na gravidade da pandemia.
-
+------------------------------------------------------------------------------------
 
 <p align="center"> <img src="images/covid_brasil.png" alt="Média de casos no Brasil" width="70%"> </p>
 
@@ -135,11 +110,24 @@ Nesta fase, concentraremos nossa análise no contexto brasileiro e procuraremos 
 - Comparação da média móvel de casos e óbitos no Brasil com o cenário global.
 <p align="center"> <img src="images/media_covid_brasil_mundo.png" alt="Média de casos Brasil X Mundo" width="70%"> </p>
 
+## **Desafios encontrados e como foram superados**
+
+- **Coleta e tratamento de dados**
+Inicialmente, encontrar um conjunto de dados confiável e atualizado foi um grande desafio. Para resolver isso, optei pelo repositório oficial da Our World in Data, que fornece informações padronizadas sobre a pandemia.
+
+- **Manipulação de grandes volumes de dados**
+Trabalhar com dados extensos exigiu técnicas de otimização, como uso de bibliotecas eficientes no Python, incluindo pandas e numpy. Além disso, utilizei Google Colab para facilitar a execução do código sem sobrecarregar minha máquina local.
+
+- **Correlação entre políticas públicas e evolução da pandemia**
+Um dos maiores desafios foi estabelecer conexões significativas entre os dados. Para isso, apliquei métodos estatísticos e utilizei visualizações gráficas com matplotlib e seaborn, o que ajudou a identificar padrões importantes.
+
+- **Interpretação dos resultados**
+Analisar os dados além dos números foi essencial para extrair insights relevantes. Para garantir conclusões bem fundamentadas, consultei pesquisas científicas e artigos sobre os efeitos de lockdowns e vacinação na contenção do vírus.
 
 ## **Considerações Finais ✨🔍📊**
 Esta análise forneceu insights tanto a nível global quanto local, utilizando um conjunto de dados fornecido pelo Our World in Data, que incluía informações sobre o número de casos e mortes em cada país, a parcela da população com idade acima de 65 anos, o PIB do país, entre outros dados relevantes. É importante ressaltar que essa análise é uma abordagem superficial e exploratória, focada no estudo, e os números foram observados em termos absolutos, o que pode influenciar os resultados finais.
 
-Algumas observações podem ficar desatualizadas devido aos relatórios contínuos da COVID-19. No entanto, com base na análise até o dia 24/08/2024 (última atualização), as informações são:
+*Algumas observações podem ficar desatualizadas devido aos relatórios contínuos da COVID-19. No entanto, com base na análise até o dia 24/08/2024 (última atualização), as informações são:*
 
 - Os países com mais casos absolutos de COVID-19 são, em ordem: Estados Unidos, Índia, Brasil, França e China. Juntos, eles representam 41% de todos os casos registrados globalmente.
 - No último registro disponível, os países com mais casos são: Rússia, Grécia, România, Inglaterra e Itália.
@@ -156,20 +144,20 @@ Algumas observações podem ficar desatualizadas devido aos relatórios contínu
 
 Esta análise oferece uma visão inicial dos dados disponíveis e pode servir como ponto de partida para investigações mais aprofundadas sobre os fatores que influenciam a propagação e o impacto da COVID-19 em diferentes países.
 
-🛠️ Como Executar
+🛠️ ## **Como Executar**
 
-Clone este repositório:
+**Clone este repositório:**
 ```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
 ```
-Instale as dependências necessárias:
+**Instale as dependências necessárias:**
 ```bash
 pip install pandas matplotlib seaborn
 ```
 **Execute o notebook no Google Colab ou localmente**
 
 
-📚 Referências
+📚 ## **Referências**
 
 https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
 
