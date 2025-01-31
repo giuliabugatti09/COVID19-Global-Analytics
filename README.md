@@ -171,7 +171,7 @@ pip install pandas matplotlib seaborn
 
 📚 Referências
 
-url = https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
+https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
 
 Agradeço pela visita ao repositório e convido você a acompanhar o progresso deste projeto. Para mais informações ou para discutir colaborações, sinta-se à vontade para me contatar pelo meu [LinkedIn](https://www.linkedin.com/in/giulia-bugatti-fonseca-226955267).
 
