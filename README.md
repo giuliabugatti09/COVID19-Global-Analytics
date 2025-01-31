@@ -1,26 +1,25 @@
-**Análise de Dados da COVID-19 com IA**
+<p align="center"> <img src="images/covid_capa.png" alt="Média de casos no Brasil" width="100%"> </p>
 
-📊 Sobre o Projeto
+# **Análise de Dados global da COVID-19**
+
+
+## **📊 Sobre o Projeto**
+
 
 Este projeto tem como objetivo analisar a evolução dos casos de COVID-19 ao redor do mundo, correlacionando com medidas de controle, como lockdowns e campanhas de vacinação. A análise foi realizada utilizando Python e bibliotecas de ciência de dados e visualização, como Pandas, Matplotlib e Seaborn.
 
-📒 Dados Utilizados
+## **📒 Dados Utilizados**
 
 Os dados utilizados foram extraídos do repositório oficial do Our World in Data, garantindo informações atualizadas e confiáveis.
 
-🔧 ##Tecnologias Utilizadas
+## **🔧 Tecnologias Utilizadas**
+- Python
+- Pandas
+- Matplotlib
+- Seaborn
+- Google Colab (para execução dos notebooks)
 
-Python
-
-Pandas
-
-Matplotlib
-
-Seaborn
-
-Google Colab (para execução dos notebooks)
-
-**Dicionário das variáveis**
+## **Dicionário das variáveis**
 
 - `aged_65_older`: Parcela da população com 65 anos ou mais, ano mais recente disponível
 - `aged_70_older`: Parcela da população com 70 anos ou mais em 2015
@@ -63,68 +62,99 @@ Google Colab (para execução dos notebooks)
 - `new_vaccinations_smoothed_per_thousand`: Novas doses de vacinação
 
 
-📈 Análises Realizadas
+## **🔧 Análises Realizadas**
 
-1️⃣ Média de Casos e Mortes: Brasil vs. Mundo
+**Percentual de Vacinados vs. Mortes**
+<p align="center"> <img src="images/percentual_vacinados_mortes.png" alt="Percentual Vacinados X Mortes" width="70%"> </p>
 
-Arquivo: media_covid_brasil_mundo.png
+- Analisa a correlação entre a taxa de vacinação e a redução do número de mortes, evidenciando o impacto da imunização.
 
-Este gráfico compara a média móvel de casos e mortes por COVID-19 no Brasil com a média global, destacando tendências ao longo do tempo.
+**Países com Mais Casos Acumulados de COVID-19**
+<p align="center"> <img src="images/paises_mais_casos_covid.png" alt="Países com mais casos Covid" width="70%"> </p>
 
-2️⃣ Porcentagem de Doses Aplicadas
+- Um ranking dos países com os maiores números de casos acumulados de COVID-19 ao longo do tempo.
 
-Arquivo: porcentagem_doses_vacina.png
+**Países com Mais Casos Atuais de COVID-19**
 
-Mostra a proporção da população que recebeu pelo menos uma dose da vacina e as doses de reforço aplicadas, ajudando a entender a cobertura vacinal.
+<p align="center"> <img src="images/paises_mais_casos_atuais_covid.png" alt="Países com mais casos atuais Covid" width="70%"> </p>
 
-3️⃣ Percentual de Vacinados vs. Mortes
+- Exibe os países com os maiores números de casos ativos no momento da análise.
 
-Arquivo: percentual_vacinados_mortes.png
+**Média de Casos e Mortes por COVID-19**
 
-Analisa a correlação entre a taxa de vacinação e a redução do número de mortes, evidenciando o impacto da imunização.
+<p align="center"> <img src="images/media_casos_mortes_covid.png" alt="Média de casos e mortes" width="70%"> </p>
 
-4️⃣ Países com Mais Casos Acumulados de COVID-19
+- Gráfico de linha mostrando a evolução das médias móveis de casos e mortes globalmente.
 
-Arquivo: paises_mais_casos_covid.png
+**Matriz de Correlação: Impacto nos Idosos e Adultos**
 
-Um ranking dos países com os maiores números de casos acumulados de COVID-19 ao longo do tempo.
+<p align="center"> <img src="images/matriz_correlacao.png" alt="Matriz de correlação" width="70%"> </p>
 
-5️⃣ Países com Mais Casos Atuais de COVID-19
+- Um heatmap que mostra a correlação entre idade e gravidade da COVID-19, analisando dados de idosos e adultos.
 
-Arquivo: paises_mais_casos_atuais_covid.png
+**Gráfico de Dispersão: PIB vs. Mortalidade**
 
-Exibe os países com os maiores números de casos ativos no momento da análise.
+<p align="center"> <img src="images/grafico_dispersao_pib.png" alt="Gráfico de dispersão: PIB" width="70%"> </p>
 
-6️⃣ Média de Casos e Mortes por COVID-19
+- Analisa a relação entre PIB per capita e o número total de mortes por milhão de habitantes, observando padrões entre diferentes continentes.
 
-Arquivo: media_casos_mortes_covid.png
+**Relação entre Mortalidade de Idosos por COVID-19 e Continente**
 
-Gráfico de linha mostrando a evolução das médias móveis de casos e mortes globalmente.
+<p align="center"> <img src="images/relacao_morte_idosos_covid_continente.png" alt="Relação entre Mortalidade de Idosos por COVID-19 e Continente" width="70%"> </p>
 
-7️⃣ Média de Casos de COVID-19 no Brasil
+- Compara a taxa de mortalidade de idosos em diferentes continentes, ajudando a identificar padrões regionais na gravidade da pandemia.
 
-Arquivo: media_casos_covid_brasil.png
 
-Um zoom específico na média móvel de casos no Brasil, evidenciando picos e quedas da pandemia no país.
+<p align="center"> <img src="images/covid_brasil.png" alt="Média de casos no Brasil" width="70%"> </p>
 
-8️⃣ Matriz de Correlação: Impacto nos Idosos e Adultos
+# **Análise de dados: Brasil**
 
-Arquivo: matriz_correlacao_idosos_adultos.png
 
-Um heatmap que mostra a correlação entre idade e gravidade da COVID-19, analisando dados de idosos e adultos.
+Nesta fase, concentraremos nossa análise no contexto brasileiro e procuraremos responder às seguintes questões:
 
-9️⃣ Gráfico de Dispersão: PIB vs. Mortalidade
+- Qual foi a data do primeiro registro de caso de COVID-19 no Brasil?
+  - O primeiro caso confirmado de COVID-19 no Brasil ocorreu em 26 de fevereiro de 2020.
+    ```bash
+    df_brasil.loc[df_brasil['total_cases'] == df_brasil['total_cases'].min()]['date'].min()
+    ```
+    ```bash
+    Timestamp('2020-02-27 00:00:00')
+    ```
+- Qual foi a data do primeiro registro de morte por COVID-19 no Brasil?
+  - A primeira morte por COVID-19 no Brasil foi registrada em 17 de março de 2020.
+      ```bash
+    df_brasil.loc[df_brasil['total_deaths'] == df_brasil['total_deaths'].min()]['date'].min()
+    ```
+    ```bash
+    Timestamp('2020-03-18 00:00:00')
+    ```
+- Gráfico da média móvel dos casos e óbitos por COVID-19 no Brasil.
+  <p align="center"> <img src="images/media_casos_covid_brasil.png" alt="Média de casos no Brasil" width="70%"> </p>
+- Gráfico de linha mostrando a evolução do número de pessoas vacinadas no Brasil e a progressão das doses de reforço administradas.
+<p align="center"> <img src="images/porcentagem_doses_vacina.png" alt="Porcentagem de Doses Aplicadas" width="70%"> </p>
+- Comparação da média móvel de casos e óbitos no Brasil com o cenário global.
+<p align="center"> <img src="images/media_covid_brasil_mundo.png" alt="Média de casos Brasil X Mundo" width="70%"> </p>
 
-Arquivo: grafico_dispersao_pib.png
 
-Analisa a relação entre PIB per capita e o número total de mortes por milhão de habitantes, observando padrões entre diferentes continentes.
+## **Considerações Finais ✨🔍📊**
+Esta análise forneceu insights tanto a nível global quanto local, utilizando um conjunto de dados fornecido pelo Our World in Data, que incluía informações sobre o número de casos e mortes em cada país, a parcela da população com idade acima de 65 anos, o PIB do país, entre outros dados relevantes. É importante ressaltar que essa análise é uma abordagem superficial e exploratória, focada no estudo, e os números foram observados em termos absolutos, o que pode influenciar os resultados finais.
 
-🔟 Relação entre Mortalidade de Idosos por COVID-19 e Continente
+Algumas observações podem ficar desatualizadas devido aos relatórios contínuos da COVID-19. No entanto, com base na análise até o dia 24/08/2024 (última atualização), as informações são:
 
-Arquivo: relacao_morte_idosos_covid_continente.png
+- Os países com mais casos absolutos de COVID-19 são, em ordem: Estados Unidos, Índia, Brasil, França e China. Juntos, eles representam 41% de todos os casos registrados globalmente.
+- No último registro disponível, os países com mais casos são: Rússia, Grécia, România, Inglaterra e Itália.
+- Os países com mais mortes absolutas por COVID-19 são: Estados Unidos, Índia, Brasil, França e China.
+- No último registro disponível, os países com mais mortes registradas são: Estados Unidos, Índia, Brasil, França e China.
+- Os países com o maior número absoluto de pessoas vacinadas são: Índia, Estados Unidos, Brasil, Indonésia e China.
+- A variável aged_65_older, que representa a parcela da população com mais de 65 anos, tem uma correlação de 15.06% com o número total de mortes.
+- A variável gdp_per_capita, que representa o PIB do país, tem uma correlação de 2.29% com o número total de mortes.
+- O primeiro caso confirmado de COVID-19 no Brasil ocorreu em 26 de fevereiro de 2020.
+- A primeira morte por COVID-19 no Brasil foi registrada em 17 de março de 2020.
+- A média móvel de casos no país teve um pico devido à variante ômicron, mas a média móvel de mortes não acompanhou um aumento considerável.
+- A porcentagem de pessoas que receberam pelo menos a primeira dose da vacina e a quantidade de doses de reforço aplicadas têm aumentado ao longo do tempo.
+- Há uma correlação negativa entre o aumento da porcentagem de pessoas vacinadas e a diminuição do percentual de mortes.
 
-Compara a taxa de mortalidade de idosos em diferentes continentes, ajudando a identificar padrões regionais na gravidade da pandemia.
-
+Esta análise oferece uma visão inicial dos dados disponíveis e pode servir como ponto de partida para investigações mais aprofundadas sobre os fatores que influenciam a propagação e o impacto da COVID-19 em diferentes países.
 
 🛠️ Como Executar
 
@@ -136,15 +166,12 @@ Instale as dependências necessárias:
 ```bash
 pip install pandas matplotlib seaborn
 ```
-Execute o notebook no Google Colab ou localmente:
-
-jupyter notebook
+**Execute o notebook no Google Colab ou localmente**
 
 
 📚 Referências
 
-Our World in Data - COVID-19 Dataset
+url = https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
 
-Johns Hopkins University COVID-19 Dashboard
+Agradeço pela visita ao repositório e convido você a acompanhar o progresso deste projeto. Para mais informações ou para discutir colaborações, sinta-se à vontade para me contatar pelo meu [LinkedIn](https://www.linkedin.com/in/giulia-bugatti-fonseca-226955267).
 
-Desenvolvido por Giulia. 🌟 Conecte-se comigo no LinkedIn.
