@@ -118,7 +118,7 @@
             "Variáveis:  67\n"
           ]
         }
-      ]
+    } 
     },
     {
       "cell_type": "code",
